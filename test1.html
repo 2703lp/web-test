@@ -1,13 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>个人名片</title>
+
+    <!-- ==================== CSS 样式 ==================== -->
+    <style>
+        /* ---------- 全局重置与基础样式 ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* 使用柔和的渐变背景，营造简约氛围 */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            /* Flex 布局实现卡片居中 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* ---------- 名片卡片容器 ---------- */
+        .card {
+            width: 360px;
+            padding: 40px 30px;
+            background-color: #ffffff;
+            /* 12px 圆角 */
+            border-radius: 12px;
+            /* 柔和阴影：水平偏移、垂直偏移、模糊半径、颜色 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            /* 文本居中对齐 */
+            text-align: center;
+            /* 过渡动画：所有属性变化在 0.3s 内平滑完成 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* ---------- 鼠标悬停效果：轻微上浮 + 阴影加深 ---------- */
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ---------- 圆形头像 ---------- */
+        .avatar {
+            width: 100px;
+            height: 100px;
+            /* 50% 圆角实现正圆形 */
+            border-radius: 50%;
+            /* 使用渐占位背景，实际项目中替换为真实图片 */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            /* 图片填充方式 */
+            object-fit: cover;
+            /* 白色边框让头像更突出 */
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ---------- 姓名 ---------- */
+        .name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        /* ---------- 职位 ---------- */
+        .title {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 24px;
+            /* 字母间距让职位文字更有设计感 */
+            letter-spacing: 1px;
+        }
+
+        /* ---------- 分割线 ---------- */
+        .divider {
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 0 auto 24px;
+            border-radius: 2px;
+        }
+
+        /* ---------- 联系方式区域 ---------- */
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* ---------- 单条联系方式 ---------- */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #4a5568;
+            /* 平滑过渡效果 */
+            transition: color 0.2s ease;
+        }
+
+        /* ---------- 联系方式悬停变色 ---------- */
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        /* ---------- 图标样式（使用 emoji 代替图标字体） ---------- */
+        .icon {
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <h1>Hello</h1>
+
+    <!-- ==================== HTML 结构 ==================== -->
+    <!-- 名片卡片主体 -->
+    <div class="card">
+
+        <!-- 圆形头像区域：使用 div + 背景渐变作为占位，实际使用时可替换为 <img> 标签 -->
+        <div class="avatar"></div>
+
+        <!-- 姓名 -->
+        <h1 class="name">李小明</h1>
+
+        <!-- 职位 -->
+        <p class="title">前端开发工程师</p>
+
+        <!-- 装饰分割线 -->
+        <div class="divider"></div>
+
+        <!-- 联系方式列表 -->
+        <div class="contact">
+            <!-- 邮箱 -->
+            <div class="contact-item">
+                <span class="icon">📧</span>
+                <span>xiaoming@example.com</span>
+            </div>
+            <!-- 电话 -->
+            <div class="contact-item">
+                <span class="icon">📱</span>
+                <span>138-0000-0000</span>
+            </div>
+            <!-- 地址 -->
+            <div class="contact-item">
+                <span class="icon">📍</span>
+                <span>北京市朝阳区</span>
+            </div>
+        </div>
+
     </div>
+
 </body>
 </html>
